@@ -25,7 +25,7 @@ namespace AnonfilesScraper {
             Int32.TryParse(amount, out amountNumber);
 
             string workingFilePath = Environment.CurrentDirectory + "\\working.txt";
-
+            
             if (!File.Exists(workingFilePath)) {
                 using(StreamWriter sw = File.CreateText(workingFilePath)) {
                     sw.WriteLine("Working ID List");
@@ -63,7 +63,9 @@ namespace AnonfilesScraper {
                 return ("Invalid");
             } else if(status == "True") {
                 Console.WriteLine(id + " Working");
-                using(StreamWriter sw = File.AppendText(id));
+                using(StreamWriter sw = File.AppendText(workingFilePath)) {
+                    sw.WriteLine(id);
+                }
                 return("Working");
             }
 
