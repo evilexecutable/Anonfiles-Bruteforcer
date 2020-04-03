@@ -11,7 +11,7 @@ using RestSharp;
 
 namespace AnonfilesScraper {
     class Program {
-        static void Main(string[] args) {
+        static async Task Main(string[] args) {
             var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
             var stringChars = new char[10];
             var random = new Random();
@@ -44,7 +44,7 @@ namespace AnonfilesScraper {
             Console.WriteLine(idList.Count + " ID\'s generated.");
 
             for (int i = 0; i < idList.Count; i++) {
-                CheckURL("https://api.anonfiles.com/v2/file/" + idList[i] + "/info", idList[i], i).GetAwaiter().GetResult();
+                await CheckURL("https://api.anonfiles.com/v2/file/" + idList[i] + "/info", idList[i], i);
             }
         }
 
