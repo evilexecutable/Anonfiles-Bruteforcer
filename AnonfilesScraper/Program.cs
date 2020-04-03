@@ -48,7 +48,7 @@ namespace AnonfilesScraper {
             }
         }
 
-        static async Task<string> CheckURL(string url, string id, int current) {
+        static async Task<bool> CheckURL(string url, string id, int current) {
             string workingFilePath = Path.Join(Environment.CurrentDirectory,"\\working.txt");
 
             var client = new RestClient(url);
@@ -60,16 +60,16 @@ namespace AnonfilesScraper {
             if(status == "False") {
                 Console.WriteLine(current + " invalid.");
                 Console.SetCursorPosition(0, Console.CursorTop);
-                return ("Invalid");
+                return (false);
             } else if(status == "True") {
                 Console.WriteLine(id + " Working");
                 using(StreamWriter sw = File.AppendText(workingFilePath)) {
                    await sw.WriteLineAsync(id);
                 }
-                return("Working");
+                return(true);
             }
 
-             return "";
+             return true;
         }
     }
 }
