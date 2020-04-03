@@ -12,8 +12,6 @@ using RestSharp;
 namespace AnonfilesScraper {
     class Program {
         static void Main(string[] args) {
-            List<string> idList = new List<string>();
-
             var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
             var stringChars = new char[10];
             var random = new Random();
@@ -23,6 +21,8 @@ namespace AnonfilesScraper {
             int amountNumber;
 
             Int32.TryParse(amount, out amountNumber);
+
+            List<string> idList = new List<string>(amountNumber);
 
             string workingFilePath = Environment.CurrentDirectory + "\\working.txt";
             
