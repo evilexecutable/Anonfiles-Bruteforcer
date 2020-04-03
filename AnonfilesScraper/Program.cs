@@ -64,7 +64,7 @@ namespace AnonfilesScraper {
             } else if(status == "True") {
                 Console.WriteLine(id + " Working");
                 using(StreamWriter sw = File.AppendText(workingFilePath)) {
-                    sw.WriteLine(id);
+                   await sw.WriteLineAsync(id);
                 }
                 return("Working");
             }
