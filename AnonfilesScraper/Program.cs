@@ -24,7 +24,7 @@ namespace AnonfilesScraper {
 
             List<string> idList = new List<string>(amountNumber);
 
-            string workingFilePath = Environment.CurrentDirectory + "\\working.txt";
+            string workingFilePath = Path.Join(Environment.CurrentDirectory,"\\working.txt");
             
             if (!File.Exists(workingFilePath)) {
                 using(StreamWriter sw = File.CreateText(workingFilePath)) {
@@ -49,7 +49,7 @@ namespace AnonfilesScraper {
         }
 
         static async Task<string> CheckURL(string url, string id, int current) {
-            string workingFilePath = Environment.CurrentDirectory + "\\working.txt";
+            string workingFilePath = Path.Join(Environment.CurrentDirectory,"\\working.txt");
 
             var client = new RestClient(url);
             var response = client.Execute(new RestRequest());
