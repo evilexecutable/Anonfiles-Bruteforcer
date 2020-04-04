@@ -19,7 +19,7 @@ namespace AnonfilesScraper
             var stringChars = new char[10];
             var random = new Random();
 
-            Console.WriteLine("ID Amount:");
+            Console.Write("ID Amount: ");
             string amount = Console.ReadLine();
             int amountNumber;
 
